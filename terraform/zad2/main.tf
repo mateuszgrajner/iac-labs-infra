@@ -24,6 +24,16 @@ resource "docker_container" "nginx" {
   }
 }
 
+resource "docker_tag" "zadanie1" {
+
+  source_image = docker_image.nginx.name
+  
+  target_image = "test"
+
+}
+
+
+
 output "address" {
   value = "http://localhost:${docker_container.nginx.ports[0].external}"
 }
